@@ -22,7 +22,7 @@ function App() {
         {" "}
 
         <DestinationForm addDestination={addDestination} />
-        <DestinationList destinations={destinations} />
+        <DestinationList destinations={destinations} setDestinations={setDestinations} />
       </div>
     </div>
   );
