@@ -1,38 +1,40 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const DestinationList = ({ destinations }) => {
+const DestinationList = ({ destinations, setDestinations }) => {
+  console.log(destinations);
+
+  const reorder = (destinations, startIndex, endIndex) => {
+    const result = Array.from(destinations);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  const onEnd = (result) => {
+    console.log(result);
+
+    setDestinations(reorder(destinations, result.source.index, result.destination.index));
+  };
+
   return (
-    <DragDropContext>
+    <DragDropContext onDragEnd={onEnd}>
       <Droppable droppableId="destinations">
         {(provided, snapshot) => (
-          
-          <ul 
-          className="destinations" 
-        //   {...provided.droppableProps} 
-          ref={provided.innerRef}>
-
+          <ul className="destinations" ref={provided.innerRef}>
             {destinations.map((destination, index) => (
-                <Draggable 
-                key={destination} 
-                draggableId={destination} 
-                index={index}>
-
-                    {(provided, snapshot) => (
-              <li 
-              key={index} 
-              {...provided.dragHandleProps} 
-              {...provided.draggableProps} 
-              ref={provided.innerRef}>
-                
-                {destination}
-                </li>
-              )}
+              <Draggable key={destination} draggableId={destination} index={index}>
+                {(provided, snapshot) => (
+                  <li key={index} {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                    {destination}
+                  </li>
+                )}
               </Draggable>
             ))}
+            {provided.placeholder}
           </ul>
-         
-        )} 
+        )}
       </Droppable>
     </DragDropContext>
   );
