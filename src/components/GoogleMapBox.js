@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, Marker, DirectionsRenderer, useLoadScript } from '@react-google-maps/api';
 
-const center = { lat: 48.8584, lng: 2.2945 };
+const center = { lat: 52.9540, lng: -1.1550 };
 
 const GoogleMapBox = ({ destinations }) => {
   const [libraries, setLibraries] = useState(["places"]);
   const [directions, setDirections] = useState(null);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+  const [distance, setDistance] = useState(0);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_Maps_API_Key,
@@ -52,7 +53,12 @@ const GoogleMapBox = ({ destinations }) => {
       getDirections();
     }
   }, [destinations, isLoaded, loadError, map]);
-
+  useEffect(() => {
+    if (!directions) return;
+    const legs = directions.routes[0].legs;
+    const totalDistance = legs.reduce((acc, leg) => acc + leg.distance.value, 0);
+    setDistance(totalDistance);
+  }, [directions]);
   if (loadError) {
     return <p>There was a problem loading the map.</p>;
   }
@@ -61,13 +67,17 @@ const GoogleMapBox = ({ destinations }) => {
     return <p>Loading...</p>;
   }
 
+  
+
+
   return (
+    <div>
     <GoogleMap
       mapContainerStyle={{
         height: '500px',
         width: '1500px',
       }}
-      center={destinations[0]}
+      center={center}
       zoom={10}
       onLoad={(map) => {
         setMap(map);
@@ -76,12 +86,15 @@ const GoogleMapBox = ({ destinations }) => {
       {destinations.map((destination, index) => (
         <Marker
           key={index}
-          position={destination}
+          position={center}
           label={(index + 1).toString()}
         />
       ))}
       {directions && <DirectionsRenderer directions={directions} />}
+      
     </GoogleMap>
+    <p>Total distance: {distance / 1000} km or {(distance * 0.00062137).toFixed(3)} miles</p>
+    </div>
   );
 };
 
