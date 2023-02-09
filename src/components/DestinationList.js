@@ -19,6 +19,7 @@ const DestinationList = ({ destinations, setDestinations }) => {
   };
 
   return (
+    <div className="DestinationList">  
     <DragDropContext onDragEnd={onEnd}>
       <Droppable droppableId="destinations">
         {(provided, snapshot) => (
@@ -28,6 +29,7 @@ const DestinationList = ({ destinations, setDestinations }) => {
                 {(provided, snapshot) => (
                   <li key={index} {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
                     {destination}
+                    <button onClick={() => setDestinations(destinations.filter((_, i) => i !== index))}>X</button>
                   </li>
                 )}
               </Draggable>
@@ -37,6 +39,9 @@ const DestinationList = ({ destinations, setDestinations }) => {
         )}
       </Droppable>
     </DragDropContext>
+    
+    
+    </div>
   );
 };
 
