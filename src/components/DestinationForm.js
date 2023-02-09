@@ -27,9 +27,10 @@ const DestinationForm = ({ addDestination }) => {
     let selectedPlace;
     if (autocompleteRef.current) {
       selectedPlace = autocompleteRef.current.getPlace();
+       console.log(selectedPlace);
     }
 
-    let newDestination = selectedPlace ? selectedPlace.name : destination;
+    let newDestination = selectedPlace ? selectedPlace.formatted_address : destination;
 
     if (!destinationList.includes(newDestination)) {
       setDestinationList([...destinationList, newDestination]);
@@ -48,7 +49,7 @@ const DestinationForm = ({ addDestination }) => {
       selectedPlace = autocompleteRef.current.getPlace();
     }
     if (selectedPlace) {
-      setDestination(selectedPlace.name);
+      setDestination(selectedPlace.formatted_address);
     }
   };
 
