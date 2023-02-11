@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, Marker, DirectionsRenderer, useLoadScript } from '@react-google-maps/api';
+// import Photos from './Photos';
 
 const center = { lat: 52.9540, lng: -1.1550 };
 
@@ -94,6 +95,7 @@ const GoogleMapBox = ({ destinations }) => {
       
     </GoogleMap>
     <p>Total distance: {distance / 1000} km or {(distance * 0.00062137).toFixed(3)} miles</p>
+    {/* <Photos placeId={"ChIJGzE9DS1YwokRGUGph3MfLrk"} /> */}
     </div>
   );
 };

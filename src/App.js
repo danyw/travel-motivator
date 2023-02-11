@@ -1,37 +1,34 @@
 import React from "react";
-import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Pages/Home";
+import AboutMe from "./Pages/AboutMe";
+import Top10 from "./Pages/Top10";
 
 // components
 import Header from "./components/Header";
-import DestinationForm from "./components/DestinationForm";
-import DestinationList from "./components/DestinationList";
-import GoogleMapBox from "./components/GoogleMapBox";
+
 
 function App() {
-  const [destinations, setDestinations] = useState([]);
-  const [destinationsSubmited, setDestinationsSubmited] = useState([]);
-  const addDestination = (destination) => {
-    setDestinations([...destinations, destination]);
-  };
-  const handleFindTrip = () => {
-    setDestinationsSubmited([...destinations]);
-  };
+  
 
   return (
     <div className="App">
       <Header />
-      <div className="DestinationForm">
-        {" "}
-        <DestinationForm addDestination={addDestination} />
-        <DestinationList destinations={destinations} setDestinations={setDestinations} />
-        <button onClick={() => setDestinations([])}>Clear</button>
-        <button onClick={handleFindTrip}>Find Trip</button>
-      </div>
-      <div className="<Map">
-        <GoogleMapBox destinations={destinationsSubmited} />
-      </div>
+      <Router>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/aboutme">About Me</Link>
+          <Link to="/top10">Top 10</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aboutme" element={<AboutMe />} />
+          <Route path="/top10" element={<Top10 />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

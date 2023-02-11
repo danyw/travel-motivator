@@ -5,7 +5,10 @@ const libraries = ["places"];
 
 const DestinationForm = ({ addDestination }) => {
   const [destination, setDestination] = useState("");
+  // const [destinationId, setDestinationId] = useState([]);
   const [destinationList, setDestinationList] = useState([]);
+  // const [destinationListId, setDestinationListId] = useState([]);
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const autocompleteRef = useRef();
@@ -31,9 +34,12 @@ const DestinationForm = ({ addDestination }) => {
     }
 
     let newDestination = selectedPlace ? selectedPlace.formatted_address : destination;
+    // let newDestinationId = selectedPlace ? selectedPlace.place_id : destination;
+    
 
     if (!destinationList.includes(newDestination)) {
       setDestinationList([...destinationList, newDestination]);
+      // setDestinationListId([...destinationListId, newDestinationId]);
       addDestination(newDestination);
       setErrorMessage("");
     } else {
@@ -50,6 +56,7 @@ const DestinationForm = ({ addDestination }) => {
     }
     if (selectedPlace) {
       setDestination(selectedPlace.formatted_address);
+      // setDestinationId(selectedPlace.place_id);
     }
   };
 
