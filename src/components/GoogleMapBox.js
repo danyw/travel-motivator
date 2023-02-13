@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, Marker, DirectionsRenderer, useLoadScript } from '@react-google-maps/api';
-// import Photos from './Photos';
+// import Photos2 from './Photos';
 
 const center = { lat: 52.9540, lng: -1.1550 };
 
@@ -68,15 +68,18 @@ const GoogleMapBox = ({ destinations }) => {
     return <p>Loading...</p>;
   }
 
+  // https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap
+
+
   
 
 
   return (
-    <div>
-    <GoogleMap
+    <div className="grow py-1 px-2" >
+    <GoogleMap 
       mapContainerStyle={{
         height: '500px',
-        width: '1500px',
+        width: '100%',
       }}
       center={center}
       zoom={10}
