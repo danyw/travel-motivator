@@ -62,17 +62,17 @@ const DestinationForm = ({ addDestination }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Destination:</label>
+      <label className="text-blue-600 font-serif text-xl font-bold pb-10   ">Destination:</label>
       <Autocomplete
         onLoad={(autocomplete) => {
           autocompleteRef.current = autocomplete;
         }}
         onPlaceChanged={onPlaceChanged}
       >
-        <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} placeholder="Type a destination" />
+        <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} placeholder="Type a destination" className="w-full" />
       </Autocomplete>
 
-      <button type="submit">Add</button>
+      <button type="submit" className="text-blue-600 font-serif border-2 rounded-md hover:opacity-70   px-3 py-1 bg-gray-200 shadow-x1  ">Add</button>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </form>
   );

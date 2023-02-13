@@ -18,18 +18,18 @@ const Home = () => {
   };
 
   return (
-    <section>
-      <div className="DestinationForm">
+    <section className="flex flex-row flex-nowrap ">
+      <div className="DestinationForm py-3 px-2 flex flex-col content-center border-zinc-300 border-8  m-2 shadow-md ">
         {" "}
         <DestinationForm addDestination={addDestination} />
         <DestinationList destinations={destinations} setDestinations={setDestinations} />
-        <button onClick={() => setDestinations([])}>Clear</button>
-        <button onClick={handleFindTrip}>Find Trip</button>
+        <button onClick={() => setDestinations([])} className="text-red-500 font-serif border-2 rounded-md hover:opacity-70  mx-20 px-1 py-1 bg-gray-200 shadow-x1">Clear</button>
+        <button onClick={handleFindTrip} className="text-blue-500 font-serif border-2 rounded-md hover:opacity-70   mt-1 mx-20 px-1 py-1 bg-gray-200 shadow-x1 font-bold">Find Trip</button>
       </div>
-      <div className="<Map">
+      {/* <div className="<Map flex"> */}
         {/* <GoogleMapBox destinations={destinationsSubmited} destinationsId={destinationsSubmitedId} /> */}
         <GoogleMapBox destinations={destinationsSubmited} />
-      </div>
+      {/* </div> */}
     </section>
   );
 };

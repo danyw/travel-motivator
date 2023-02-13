@@ -23,13 +23,13 @@ const DestinationList = ({ destinations, setDestinations }) => {
     <DragDropContext onDragEnd={onEnd}>
       <Droppable droppableId="destinations">
         {(provided, snapshot) => (
-          <ul className="destinations" ref={provided.innerRef}>
+          <ul className="destinations py-2" ref={provided.innerRef}>
             {destinations.map((destination, index) => (
               <Draggable key={destination} draggableId={destination} index={index}>
                 {(provided, snapshot) => (
-                  <li key={index} {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                  <li key={index} {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef} className="">
                     {destination}
-                    <button onClick={() => setDestinations(destinations.filter((_, i) => i !== index))}>X</button>
+                    <button onClick={() => setDestinations(destinations.filter((_, i) => i !== index))} className="text-blue-500 font-serif  hover:text-blue-900  px-1 py-0 m-2 ">X</button>
                   </li>
                 )}
               </Draggable>

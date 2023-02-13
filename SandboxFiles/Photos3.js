@@ -28,4 +28,4 @@ const Photos = ({ placeId }) => {
   );
 };
 
-export default Photos;
+// export default Photos;
