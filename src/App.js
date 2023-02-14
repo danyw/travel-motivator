@@ -31,7 +31,7 @@ function App() {
           <Route path="/top10" element={<Top10 />} />
         </Routes>
       </Router>
-      <GetPhotosReferences />
+      {/* <GetPhotosReferences /> */}
     </div>
   );
 }
