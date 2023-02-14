@@ -4,6 +4,7 @@ import { useState } from "react";
 import DestinationForm from "../components/DestinationForm";
 import DestinationList from "../components/DestinationList";
 import GoogleMapBox from "../components/GoogleMapBox";
+import Geocoding from "../components/Geocoding";
 
 const Home = () => {
   const [destinations, setDestinations] = useState([]);
@@ -30,6 +31,7 @@ const Home = () => {
         {/* <GoogleMapBox destinations={destinationsSubmited} destinationsId={destinationsSubmitedId} /> */}
         <GoogleMapBox destinations={destinationsSubmited} />
       {/* </div> */}
+      <Geocoding destinations={destinationsSubmited} />
     </section>
   );
 };
