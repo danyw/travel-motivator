@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { GoogleMap, Marker, DirectionsRenderer, useLoadScript } from '@react-google-maps/api';
-// import Photos2 from './Photos';
+import React, { useState, useEffect } from "react";
+import { GoogleMap, Marker, DirectionsRenderer, useLoadScript } from "@react-google-maps/api";
 
-const center = { lat: 52.9540, lng: -1.1550 };
+const center = { lat: 52.954, lng: -1.155 };
 
 const GoogleMapBox = ({ destinations }) => {
   const [libraries, setLibraries] = useState(["places"]);
@@ -38,10 +37,10 @@ const GoogleMapBox = ({ destinations }) => {
           destination: destinations[destinations.length - 1],
           waypoints: waypoints.slice(1, -1),
           optimizeWaypoints: true,
-          travelMode: 'DRIVING',
+          travelMode: "DRIVING",
         },
         (result, status) => {
-          if (status === 'OK') {
+          if (status === "OK") {
             setDirections(result);
           } else {
             console.error(`error fetching directions ${result}`);
@@ -54,12 +53,14 @@ const GoogleMapBox = ({ destinations }) => {
       getDirections();
     }
   }, [destinations, isLoaded, loadError, map]);
+
   useEffect(() => {
     if (!directions) return;
     const legs = directions.routes[0].legs;
     const totalDistance = legs.reduce((acc, leg) => acc + leg.distance.value, 0);
     setDistance(totalDistance);
   }, [directions]);
+
   if (loadError) {
     return <p>There was a problem loading the map.</p>;
   }
@@ -68,37 +69,27 @@ const GoogleMapBox = ({ destinations }) => {
     return <p>Loading...</p>;
   }
 
-  // https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap
-
-
-  
-
-
   return (
-    <div className="grow py-1 px-2" >
-    <GoogleMap 
-      mapContainerStyle={{
-        height: '500px',
-        width: '100%',
-      }}
-      center={center}
-      zoom={10}
-      onLoad={(map) => {
-        setMap(map);
-      }}
-    >
-      {destinations.map((destination, index) => (
-        <Marker
-          key={index}
-          position={center}
-          label={(index + 1).toString()}
-        />
-      ))}
-      {directions && <DirectionsRenderer directions={directions} />}
-      
-    </GoogleMap>
-    <p>Total distance: {distance / 1000} km or {(distance * 0.00062137).toFixed(3)} miles</p>
-    {/* <Photos placeId={"ChIJGzE9DS1YwokRGUGph3MfLrk"} /> */}
+    <div className="grow py-1 px-2">
+      <GoogleMap
+        mapContainerStyle={{
+          height: "500px",
+          width: "100%",
+        }}
+        center={center}
+        zoom={10}
+        onLoad={(map) => {
+          setMap(map);
+        }}
+      >
+        {destinations.map((destination, index) => (
+          <Marker key={index} position={center} label={(index + 1).toString()} />
+        ))}
+        {directions && <DirectionsRenderer directions={directions} />}
+      </GoogleMap>
+      <p>
+        Total distance: {distance / 1000} km or {(distance * 0.00062137).toFixed(3)} miles
+      </p>
     </div>
   );
 };
