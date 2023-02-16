@@ -1,3 +1,11 @@
+# What can you do
+The website allows for adding and arranging multiple places. After clicking on "Find trip" a route is being generated together with the photos of the choosen places. Currently, travel mode is set to driving.
+
+# TODOs
+- While typing destination only add button works properly - enter causes weird behavioral .
+- Once deleted destinations can not be entered again due to  "This destination is already on the list." The page needs to be refreshed.
+- Warning: "VM6583 react_devtools_backend.js:4012 Warning: Encountered two children with the same key...". UUID was used for generating unique keys. but other problems occured.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
