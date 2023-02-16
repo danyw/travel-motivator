@@ -6,6 +6,13 @@ import DestinationList from "../components/DestinationList";
 import GoogleMapBox from "../components/GoogleMapBox";
 import Geocoding from "../components/Geocoding";
 
+function removeElementsByClass(className){
+  const elements = document.getElementsByClassName(className);
+  while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+  }
+}
+
 const Home = () => {
   const [destinations, setDestinations] = useState([]);
   const [destinationsSubmited, setDestinationsSubmited] = useState([]);
@@ -16,6 +23,7 @@ const Home = () => {
   };
   const handleFindTrip = () => {
     setDestinationsSubmited([...destinations]);
+    removeElementsByClass("Rerun");
   };
 
   return (
