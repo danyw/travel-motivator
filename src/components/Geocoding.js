@@ -2,16 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GetPhotosReferences from "./GetPhotosReferences";
 
- function removeElementsByClass(className){
-        const elements = document.getElementsByClassName(className);
-        while(elements.length > 0){
-            elements[0].parentNode.removeChild(elements[0]);
-        }
-    }
+ 
 
 const Geocoding = ({ destinations }) => {
     const [placesIds, setPlacesIds] = useState([]);
-
     useEffect(() => {
         destinations.forEach((destination) => {
             
@@ -27,7 +21,7 @@ const Geocoding = ({ destinations }) => {
         });
     }, [destinations]);
    
-removeElementsByClass("Rerun");
+
 
     return (
         <div>
