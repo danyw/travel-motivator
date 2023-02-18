@@ -1,6 +1,9 @@
 # What can you do
 The website allows for adding and arranging multiple places. After clicking on "Find trip" a route is being generated together with the photos of the choosen places. Currently, travel mode is set to driving.
 
+# INFO
+Due to problems with CORS - axios was replaced with fetch and proxy was used ("https://cors-anywhere.herokuapp.com/").
+The google API Places should be used on the server side. But client library is less safe, as the key is visible.
 # TODOs
 - While typing destination only add button works properly - enter causes weird behavioral .
 - Once deleted destinations can not be entered again due to  "This destination is already on the list." The page needs to be refreshed.
