@@ -13,14 +13,14 @@ function App() {
       <Header />
 
       <Router>
-        <nav className="flex flex-row gap-24 justify-center py-4 bord">
-          <Link to="/" className="border-2 border-zinc-400 px-10 py-0.5 rounded bg-gray-300 shadow-xl ">
+        <nav className="flex flex-row gap-1 justify-center py-4 bord md:gap-24 " >
+          <Link to="/" className="border-2 border-zinc-400 px-2 py-2 md:px-10 md:py-0.5 rounded bg-gray-300 shadow-xl ">
             Home
           </Link>
-          <Link to="/aboutme" className="border-2 border-zinc-400 px-10 py-0.5 rounded bg-gray-300 shadow-xl ">
+          <Link to="/aboutme" className="border-2 border-zinc-400 px-2 py-2 md:px-10 md:py-0.5 rounded bg-gray-300 shadow-xl ">
             About Me
           </Link>
-          <Link to="/top10" className="border-2 border-zinc-400 px-10 py-0.5 rounded bg-gray-300 shadow-xl ">
+          <Link to="/top10" className="border-2 border-zinc-400 px-2 py-2 md:px-10 md:py-0.5 rounded bg-gray-300 shadow-xl ">
             Top 10
           </Link>
         </nav>
