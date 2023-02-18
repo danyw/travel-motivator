@@ -2,7 +2,6 @@
   "name": "travel-motivator",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://maps.googleapis.com/maps/api",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@react-google-maps/api": "^2.18.1",
