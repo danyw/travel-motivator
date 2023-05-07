@@ -8,7 +8,8 @@ const Geocoding = ({ destinations }) => {
     destinations.forEach((destination) => {
       let APP_ID = process.env.REACT_APP_Maps_API_Key;
       let formatted_address = destination;
-      const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      const proxyurl = "https://protected-everglades-68604.herokuapp.com/";
       const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${formatted_address}&key=${APP_ID}`;
       fetch(`${proxyurl}${url}`)
         .then((response) => response.json())

@@ -6,7 +6,8 @@ const GetPhotosReferences = (props) => {
   useEffect(() => {
     let APP_ID = process.env.REACT_APP_Maps_API_Key;
     let placeId = props.placesId;
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const proxyurl = "https://protected-everglades-68604.herokuapp.com/";
     const url = "https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Cphotos&place_id=";
 
     fetch(`${proxyurl}${url}${placeId}&key=${APP_ID}`)
